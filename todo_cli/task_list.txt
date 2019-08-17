@@ -1,0 +1,10 @@
+0 [✓] Take out the trash
+1 [✓] Buy toothpaste
+2 [ ] Feed Hudson
+3 [ ] Pet Aurora
+4 [ ] Find a cure for aging 
+5 [ ]  Kitten dinnern
+6 [ ]  Hudson Looving
+7 [ ]  Aurora loving
+8 [ ]  kittten dinnner
+9 [ ]  Treats!!!!!!
