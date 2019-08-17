@@ -1,9 +1,8 @@
-0 [✓] Take out the trash
-1 [✓] Buy toothpaste
-2 [ ] Find a cure for aging 
-3 [ ] Hudson Loving
-4 [ ] kittten dinnner
-5 [✓] Treats!!!!!!
-6 [ ] chase Hudson
-7 [ ] feed Kittens Dinner, lunch and breakfest
-8 [ ] kitten brushing
+0 [ ] Take out the trash
+1 [ ] Buy toothpaste
+2 [✓] kittten dinnner
+3 [✓] Treats!!!!!!
+4 [ ] chase Hudson
+5 [ ] feed Kittens Dinner, lunch and breakfest
+6 [ ] kitten brushing
+7 [ ] Kitten nap time

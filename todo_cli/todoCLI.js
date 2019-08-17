@@ -6,12 +6,11 @@ const interface = readline.createInterface({
     output: process.stdout,
 })
 
-
 // The Menu
 
 let fileName;
 let nextNumber;
-
+let taskList;
 if (process.argv[2] === undefined) {
     fileName = 'task_list.txt';
     fs.readFile(fileName, (err, data) => {
@@ -82,29 +81,22 @@ function menu() {
     })
 }
 
-
 // View
 
 function viewTask() {
-    fs.readFile(fileName, (err, data) => {
-        if (err) {
-            console.log("error reading file");
-        } else {
-            let task = data.toString().split("\n");
-            console.log(`${task.join('\n')}\n`);
-            menu();
-        }
-    })
-
+    let task = taskList.split("\n");
+    console.log(`${task.join('\n')}\n`);
+    menu();
 };
 
 // Add
 
 function addTask(num) {
     interface.question('What is the new task?  ', (anwser) => {
-        let task = `\n${num} [ ] ${anwser}`
+        let list = `\n${num} [ ] ${anwser}`
+        let message = `Added task: ${anwser}`
         if (num !== 0) {
-            fs.appendFile(fileName, task, (err) => {
+            fs.appendFile(fileName, list, (err) => {
                 if (err) {
                     console.log('problem adding new task');
                 } else {
@@ -114,77 +106,68 @@ function addTask(num) {
                 }
             })
         } else {
-            fs.writeFile(fileName, task, (err)=>{
-                if (err){
-                    console.log("Problem adding new task");
-                } else {
-                    console.log(`Added task: ${anwser}\n`);
-                    menu();
-                    return num++;
-                }
-            })
+            fileName(list, message)
+            return num++;
         }
-
-})
+    })
 }
 
 // Complete
 
 function completeTask(n) {
-    fs.readFile(fileName, (err, data) => {
-        if (err) {
-            console.log(" Error reading file")
-        } else {
-            let list = data.toString().split('\n')
-            let comTask = list[n];
-            let task = comTask.slice(0, 3) + "✓" + comTask.slice(4)
-            list.splice(n, 1, task)
-            list = list.join('\n');
-            fs.writeFile(fileName, list, (err) => {
-                if (err) {
-                    console.log('error writing file')
-                } else {
-                    console.log(`Task ${comTask} completed \n`)
-                    menu();
-                }
-            })
-        }
-    })
+    let list = taskList.split('\n')
+    let comTask = list[n];
+    let task = comTask.slice(0, 3) + "✓" + comTask.slice(4)
+    list.splice(n, 1, task)
+    list = list.join('\n');
+    let message = `completed:${comTask.slice(5)} `;
+    fileWrite(list, message);
 };
 
 // Delete
 
 function deleteTask(n) {
-    console.log("delete");
+    let list = taskList.split('\n');
+    let result = [];
+    let index = 0;
+    let deletedTask;
+    for (let i = 0; i < list.length; i++) {
+        if (i !== parseInt(n)) {
+            result.push(`${index}${list[i].slice(1)}`)
+            index++;
+        } else {
+            deletedTask = `${list[i].slice(5)}`;
+        }
+    }
+    nextNumber = index++
+    list = result.join('\n');
+    let message = `Deleted: ${deletedTask}`;
+    fileWrite(list, message)
+}
+
+function fileRead() {
     fs.readFile(fileName, (err, data) => {
         if (err) {
-            console.log("error with reading file")
+            console.log("error with reading file");
         } else {
-            let list = data.toString().split('\n');
-            let result = [];
-            let index = 0;
-            let deletedTask;
-            for (let i = 0; i < list.length; i++) {
-                if (i !== parseInt(n)) {
-                    result.push(`${index}${list[i].slice(1)}`)
-                    index++;
-                } else {
-                    deletedTask = `${list[i].slice(5)}`;
-                }
-            }
-            nextNumber = index++
-            list = result.join('\n');
-            fs.writeFile(fileName, list, (err) => {
-                if (err) {
-                    console.log('error deleting task');
-                } else {
-                    console.log(`Deleted: ${deletedTask} /n`);
-                    menu();
-                }
-            })
+            taskList = data.toString();
+        }
+    })
+}
+
+function fileWrite(list, message) {
+    fs.writeFile(fileName, list, (err) => {
+        if (err) {
+            console.log('Error writing file');
+        } else {
+            console.log(`${message} \n`);
+
+            taskList = list;
+            menu();
         }
     })
 }
 
 
+fileRead();
 menu();
