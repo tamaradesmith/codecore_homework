@@ -1,10 +1,9 @@
 0 [✓] Take out the trash
 1 [✓] Buy toothpaste
-2 [ ] Feed Hudson
-3 [ ] Pet Aurora
-4 [ ] Find a cure for aging 
-5 [ ]  Kitten dinnern
-6 [ ]  Hudson Looving
-7 [ ]  Aurora loving
-8 [ ]  kittten dinnner
-9 [ ]  Treats!!!!!!
+2 [ ] Find a cure for aging 
+3 [ ] Hudson Loving
+4 [ ] kittten dinnner
+5 [✓] Treats!!!!!!
+6 [ ] chase Hudson
+7 [ ] feed Kittens Dinner, lunch and breakfest
+8 [ ] kitten brushing
