@@ -1,8 +1,2 @@
-0 [ ] Take out the trash
-1 [ ] Buy toothpaste
-2 [✓] kittten dinnner
-3 [✓] Treats!!!!!!
-4 [ ] chase Hudson
-5 [ ] feed Kittens Dinner, lunch and breakfest
-6 [ ] kitten brushing
-7 [ ] Kitten nap time
+0 [ ] Feed Hudson
+1 [ ] pet the kitten
