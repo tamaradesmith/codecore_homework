@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+
+<% cohorts.forEach(cohort => { %>
+
+<div class="container border">
+    <h3>
+        <img src="<%= cohort.logoUrl %>" alt="icon" class='hero-img'>
+
+            <%= cohort.name %>
+        </h3>
+    <p>
+        <%= cohort.members %>
+        </p>
+        <a href="/cohorts/<%= cohort.id %> " class="button btn btn-primary"> Show cohort </a>
+</div>
+    
+<% }); %>
+
+
+
+
+
+
+
+<%- include('../partials/footer') %>
