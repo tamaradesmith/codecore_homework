@@ -1,7 +1,61 @@
 <%- include('../partials/header') %>
 
+<div class="container border bottom_border">
+   <div>
+<div style="display: flex; flex-direction: row">
+
+    <h1 style="flex: 1" ><%= cohorts.name %></h1>
+    <form action="/cohorts/<%= cohorts.id %> " method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="btn btn-info"    >
+    </form>
+    <form action="/cohorts/<%= cohorts.id %>/edit " method="GET">
+          <input type="submit" value="Edit" class="btn btn-info">
+    </form>
+</div>
+       <p>
+           <%= cohorts.members %>
+        </p>
+    
+    </div> 
+    
+</div>
+<form action="/cohorts/<%= cohorts.id %>/assign" method="post">
+<div class="container border">
+<h3> Method</h3>
+<input type="radio" name="type" value="Memebr_count">
+<label for="type">Team Count </label>
+<br>
+<input type="radio" name="type"  value="team_count">
+<label for="type">Number Per Team </label>
+<br>
+<label for="quantity">Quantity:</label>
+<input type="text" name="quantity">
+<br>
+<input type="submit" value="Assign Team">
+</form>
 
 
-<h1> hi there</h1>
+
+</div>
+<!-- 
+<% if (cohortsTeam != "none") { %>
+
+    <div class="container">
+        <div class="container border"><h4># Members </h4></div>
+        
+       
+    <div> <%= members %>
+        <br>     -->
+
+        
+     <!-- </div> -->
+
+ 
+        
+        
+    <!-- </div> -->
+<!-- <% } %> -->
+
 
 <%- include('../partials/footer') %>

@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<div class="container border">
+
+    <form action="/cohorts/<%= cohorts.id %>" method="POST">
+        
+        <input type="hidden" name="_method" value="PATCH">
+        
+        
+        <%- include("./partials/infoForm") %>
+        
+    </form>
+</div>
+
+
+<%- include('../partials/footer') %>

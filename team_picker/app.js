@@ -12,6 +12,13 @@ app.use(express.urlencoded({ extented: true }));
 app.use(logger('dev'))
 
 
+app.use(methodOverride((req, res) => {
+    if (req.body && req.body._method) {
+        const method = req.body._method;
+        return method;
+    }
+}));
+
 app.set('view engine', 'ejs');
 
 
