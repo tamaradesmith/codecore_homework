@@ -6,12 +6,14 @@
 //  } 
 
 
-function makeTeam(obj) {
+function makeTeam(data, obj) {
     const teams = [];
     const index = [];
-    const member = obj.members;
     const num = obj.quantity;
+    // console.log(data)
+    const member = data.members.trim().split(", ")
     if (obj.type === 'team_count') {
+        console.log('MEMBER: ', obj.type);
         let teamNumber = 0;
         let size = Math.ceil(member.length / num);
         while (teamNumber < num) {
@@ -26,14 +28,15 @@ function makeTeam(obj) {
 
                     n = Math.floor(Math.random() * (member.length));
                 };
-                team.push(member[n]);
+                // newMember = member[n].toUpperCase().slice(1)
+                team.push(` ${member[n][0].toUpperCase()}${member[n].slice(1)}`);
                 index.push(n);
                 i++;
             }
             teams.push(team);
             teamNumber++;
         }
-        return teams;
+        // return teams;
     } else {
         const size = num;
         while (index.length !== member.length) {
@@ -47,7 +50,8 @@ function makeTeam(obj) {
                 while (index.includes(n)) {
                     n = Math.floor(Math.random() * (member.length));
                 };
-                team.push(member[n]);
+                // name.charAt(0).toUpperCase() + name.slice(1)
+                team.push(` ${member[n]}`);
                 index.push(n);
                 i++;
             };
@@ -58,11 +62,11 @@ function makeTeam(obj) {
                 teams.push(team);
             };
         }
-        return teams;
     };
+    return teams;
 
 };
-// // makeTeam(members, "bob", 2)
+
 // console.log(makeTeam(object))
 
 module.exports = makeTeam;

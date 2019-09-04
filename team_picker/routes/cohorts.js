@@ -44,7 +44,7 @@ router.get('/cohorts/:id', (req, res) => {
         .then((data) => {
             res.render('cohorts/show', {
                 cohorts: data[0],
-                cohortsTeam: "none",
+                teams: "none",
             });
         });
 });
@@ -52,7 +52,6 @@ router.get('/cohorts/:id', (req, res) => {
 
 router.post('/cohorts/:id/assign', (req, res) => {
     const cohortsTeam = {
-        members: req.body.members,
         quantity: req.body.quantity,
         type: req.body.type,
     };
@@ -60,35 +59,52 @@ router.post('/cohorts/:id/assign', (req, res) => {
         .select("*")
         .where({ id: req.params.id })
         .then((data) => {
-            res.render('cohorts/show', () => {
-                cohorts: data[0],
-                 makeTeam(cohortsTeam)
-            });
+            const cohorts = data[0]
+            const teams = makeTeam(data[0], cohortsTeam);
+            let i = 1;
+            res.render('cohorts/show', { teams, cohorts, i });
         });
 });
 
 // delete
 
-router.delete('/cohorts/:id', (req, res) =>{
+router.delete('/cohorts/:id', (req, res) => {
     knex('cohorts')
-    .where({id: req.params.id})
-    .then((data) =>{
-        res.redirect('/')
-    })
+        .where({ id: req.params.id })
+        .then((data) => {
+            res.redirect('/')
+        })
 })
 
 
 // edit
 
-router.get('/cohorts/:id/edit', (req, res) =>{
+router.get('/cohorts/:id/edit', (req, res) => {
     knex('cohorts')
-    .select("*")
-    .where({id: req.params.id})
-    .then((data)=>{
-        res.render('cohorts/edit', {
-            cohorts: data[0]
+        .select("*")
+        .where({ id: req.params.id })
+        .then((data) => {
+            res.render('cohorts/edit', {
+                cohort: data[0]
+            })
         })
-    })
+})
+
+// Patch
+
+router.patch('/cohorts/:id', (req, res) => {
+    const cohortsParams = {
+        name: req.body.name,
+        members: req.body.members,
+        logoUrl: req.body.logoUrl,
+    }
+    knex('cohorts')
+        .where({ id: req.params.id })
+        .update(cohortsParams)
+        .returning('id')
+        .then((data) => {
+            res.redirect(`/cohorts/${data[0]}`)
+        })
 })
 
 
