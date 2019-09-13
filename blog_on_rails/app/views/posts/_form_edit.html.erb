@@ -1,4 +1,4 @@
-<div>
+<div class="form-width">
 <%  if @post.errors.any? %>
     <ul>
         <% @post.errors.full_messages.each do |msg| %>
@@ -13,15 +13,15 @@
         <div class="form">
             <div class="form-item">
                 <%= f.label :title, class:"form-label" %>
-                <%= f.text_field :title, rows: 1,class:"flex-item" %>
+                <%= f.text_field :title, rows: 1,class:"form-field" %>
             </div>
             <div class="form-item" >
                 <%= f.label :body, class:"form-label" %>
-                <%= f.text_area :body, rows: 5, class:"flex-item" %>
+                <%= f.text_area :body, rows: 5, class:"form-field" %>
             </div>
-            <div  class="form-btn">
-                <%= f.submit %>
+            <div>
+                <%= f.submit "Save Edits", class:'form-btn' %>
             </div>
         </div>
     <% end %>
-    </div>
+</div>

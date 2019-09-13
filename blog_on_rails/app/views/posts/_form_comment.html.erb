@@ -1,0 +1,18 @@
+
+   <%= form_with(model: [@post, @comment], local:true) do |f| %>
+            <% if @comment.errors.any?  %>
+                <ul>
+                    <% @comment.errors.full_messages.each do |msg|  %>
+                        <li><%= msg %></li>
+                    <% end  %>
+                </ul>
+            <% end %>
+            <div class="form-comment">
+            <div>
+            <%= f.text_area :body, rows: 4, placeholder: "Enter comment here", class:"comment-text-area" %>
+           </div>
+           <div>
+            <%= f.submit "Submit Comment", class:"form-btn" %>
+           </div>
+</div>
+        <% end %>

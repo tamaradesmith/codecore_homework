@@ -1,36 +1,39 @@
 
 <article>
-    <div class="card">
-        <div>
-            <h2> <%= @post.title %> </h2>
-            <p><%= @post.body %> </p>
-        </div>
+<div class="container">
+    <div class="card-blog">
+       
+            <h2 class="card-header"> <%= @post.title %> </h2>
+            <p class="card-body card-body-text"><%= @post.body %> </p>
+            <p class="card-created">Post created <%=  time_ago_in_words(@post.created_at) %> ago </p>
+        
         <div>
 
-            <%= link_to "Edit", edit_post_path(@post) %>
-            <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Delete post"} %>
+            <%= link_to "Edit", edit_post_path(@post), class:"form-btn" %>
+            <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Delete post"}, class:"form-btn" %>
+
+        </div>
+        </div>
         </div>
     </div>
+    <div class="card-comment">
+        <h3 >Comments</h3>
+        <div>
+            <%= render "/posts/form_comment" %>
+        </div>
 
-    <div>
-        <%= form_with(model: [@post, @comment], local:true) do |f| %>
-            <% if @comment.errors.any?  %>
-                <ul>
-                    <% @comment.errors.full.messages.each do |msg|  %>
-                        <li><%= msg %></li>
-                    <% end  %>
-                </ul>
+
+
+        <div>
+            <% @comments.each do |comment| %>
+            <div class="top-border comment-log">
+            <%= comment.body %>
+            <div class="comment-log-footing">
+            <%=  time_ago_in_words(comment.created_at)  %> 
+                <%= link_to "Delete comment", post_comment_path(@post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"comment-btn" %>
+            </div>
+            </div>
             <% end %>
-            <%= f.text_area :body, cols: 50, rows: 2, placeholder: "Enter comment here" %>
-            <%= f.submit "Submit Comment" %>
-        <% end %>
-    </div>
-    <div class="card">
-        <% @post.comments.each do |comment| %>
-        <%= comment.body %>
-        <%=  time_ago_in_words(comment.created_at) %>
-            <%= link_to "Delete comment", post_comment_path(@post, comment), method: :delete, data: {confirm: "Are you sure?"} %>
-        <% end %>
-
-    </div>
+        </div>
+ 
 </article>

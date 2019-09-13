@@ -12,7 +12,7 @@
 <header>
 <div class="nav-icon">
 <%= image_tag "td3diconleft.png", class:"icon"%>
-<p> Blog On Rails </p>
+<%=  link_to "Blog On Rails", index_posts_path, class:"icon-text" %>
 <%= image_tag "td3diconright.png", class:"icon"%>
 </div>
 <%= link_to "Home", index_posts_path, class:"nav-item"  %>
@@ -25,7 +25,7 @@
 
 
 <div class="footing">
-created by T. Smith 
+Created by T. Smith 
 </div>
   </body>
 </html>
