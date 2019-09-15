@@ -201,7 +201,7 @@ img {
 .comment-log-footing {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   font-size: 0.65em;
   padding: 0.75em 0em 0em;
 }
@@ -215,6 +215,13 @@ img {
 }
 .comment-btn:hover {
   color: slategray;
+}
+.user{
+  font-size: .75em;
+  text-align: right;
+  margin: 1em;
+  color:darkslategray;
+
 }
 @media (min-width: 992px) {
   header {

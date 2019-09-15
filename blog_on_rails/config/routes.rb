@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'users/new'
+  get 'users/create'
   # get 'posts/index'
   root 'posts#index'
   get '/posts', {to: 'posts#index', as: :index_posts}
@@ -19,6 +22,11 @@ Rails.application.routes.draw do
     resources :comments, only:
       [:create, :destroy]
     end
+    resources :users, only: [:new, :create, :edit]
+    
+    get '/password', to: 'users#password', as: :password_user
 
-
+    resources :sessions, only: [:new, :create] do
+      delete :destroy, on: :collection
+    end
 end

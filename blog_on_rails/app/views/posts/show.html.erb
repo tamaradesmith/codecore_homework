@@ -5,6 +5,9 @@
        
             <h2 class="card-header"> <%= @post.title %> </h2>
             <p class="card-body card-body-text"><%= @post.body %> </p>
+             <p class=" user"> 
+             <%=  @post.user&.full_name %>
+             </p>
             <p class="card-created">Post created <%=  time_ago_in_words(@post.created_at) %> ago </p>
         
         <div>
@@ -28,9 +31,20 @@
             <% @comments.each do |comment| %>
             <div class="top-border comment-log">
             <%= comment.body %>
+
             <div class="comment-log-footing">
+            <div>
+            <%= comment.user&.full_name %>
+            </div>
+            <div>
+
             <%=  time_ago_in_words(comment.created_at)  %> 
+            </div>
+            <div>
+
                 <%= link_to "Delete comment", post_comment_path(@post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"comment-btn" %>
+            </div>
+
             </div>
             </div>
             <% end %>
