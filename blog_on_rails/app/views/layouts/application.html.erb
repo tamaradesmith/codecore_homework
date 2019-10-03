@@ -8,35 +8,42 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
   </head>
-  <body>
-<header>
-<div class="nav-icon">
-<%= image_tag "td3diconleft.png", class:"icon"%>
-<%=  link_to "Blog On Rails", index_posts_path, class:"icon-text" %>
-<%= image_tag "td3diconright.png", class:"icon"%>
-</div>
-<%= link_to "Home", index_posts_path, class:"nav-item"  %>
-<%= link_to "New Post", new_post_path,class:"nav-item"  %>
+<body>
+  <header>
+    <div class="nav-icon">
+      <%= image_tag "td3diconleft.png", class:"icon"%>
+      <%=  link_to "Blog On Rails", index_posts_path, class:"icon-text" %>
+      <%= image_tag "td3diconright.png", class:"icon icon_hidden"%>
+    </div>
+      <%= link_to "Home", index_posts_path, class:"nav-item"  %>
+      <%= link_to "New Post", new_post_path,class:"nav-item"  %>
 
-<%  if user_signed_in? %>
-<%= current_user.first_name %>
-<%= link_to "Log out", sessions_path, method: :delete, data: {confirm: "Sure you want to Log out?"}, class: "nav-item"%>
-<%= link_to "Edit", password_user_path(current_user), class:"form-btn" %>
+    <%  if user_signed_in? %>
+      <%= link_to "#{current_user.first_name}", edit_user_path(current_user), class:"nav-item" %>
+      <%= link_to "Log out", sessions_path, method: :delete, data: {confirm: "Sure you want to Log out?"}, class: "nav-item"%>
 
-  <% else %>
-<%= link_to "Login", new_session_path,class:"nav-item"  %>
 
-<% end %>
-</header>
+    <% else %>
+      <%= link_to "Login", new_session_path,class:"nav-item"  %>
+      <%= link_to "New User", new_user_path,class:"nav-item"  %>
+    <% end %>
+
+  </header>
+
+    <% flash.each do |type, message| %>
+              <div class="flash flash-  <%= type %>" >
+              <%= message %>
+            <% end %>
+
     <%= yield %>
 
 
 
 
 
-<div class="footing">
+      <div class="footing">
 
-Created by T. Smith 
-</div>
-  </body>
+        Created by T. Smith 
+      </div>
+</body>
 </html>

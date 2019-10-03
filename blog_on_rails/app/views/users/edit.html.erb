@@ -1,1 +1,41 @@
-<%= render "edit_password" %>
+<% if @current_user.errors.any? %>
+
+    <ul>
+        <% @current_user.errors.full_messages.each do |msg| %>
+            <li>
+                <%= msg %>
+            </li>
+        <% end %>
+    </ul>
+
+<% end %>
+
+<%= form_with(model: @current_user, url: user_path, local: true) do |f|%>
+
+    <div class="form">
+
+        <div class="form-item">
+            <%= f.label :first_name, class:"form-label" %>
+            <%= f.text_field :first_name,class:"form-field" %>
+        </div>
+
+        <div class="form-item">
+            <%= f.label :last_name, class:"form-label" %>
+            <%= f.text_field :last_name,class:"form-field" %>
+        </div>
+
+        <div class="form-item">
+            <%= f.label :email, class:"form-label" %>
+            <%= f.email_field :email,class:"form-field" %>
+        </div>
+
+        <div class="form-item">
+            <%= f.submit "Save Edits", method: :put, class:'form-btn'%>
+
+            <%= link_to "Change password", edit_password_path, class:'form-btn' %>
+        </div>
+</div>
+
+<% end %>
+
+

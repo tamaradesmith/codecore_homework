@@ -11,10 +11,10 @@
             <p class="card-created">Post created <%=  time_ago_in_words(@post.created_at) %> ago </p>
         
         <div>
-
+<% if can? :crud, @post %>
             <%= link_to "Edit", edit_post_path(@post), class:"form-btn" %>
             <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Delete post"}, class:"form-btn" %>
-
+<% end %>
         </div>
         </div>
         </div>
@@ -40,11 +40,12 @@
 
             <%=  time_ago_in_words(comment.created_at)  %> 
             </div>
+            <% if can? :crud, comment%>
             <div>
 
                 <%= link_to "Delete comment", post_comment_path(@post, comment), method: :delete, data: {confirm: "Are you sure?"}, class:"comment-btn" %>
             </div>
-
+            <% end %>
             </div>
             </div>
             <% end %>

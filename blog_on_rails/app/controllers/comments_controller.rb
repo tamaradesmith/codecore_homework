@@ -18,14 +18,21 @@ class CommentsController < ApplicationController
     def destroy
         @post = Post.find params[:post_id]
         @comment = Comment.find params[:id]
-        @comment.destroy
-        redirect_to post_path(@post), notice:"comment deleted"
+        if can? :crud, @comment
+            @comment.destroy
+            redirect_to post_path(@post), notice:"comment deleted"
+        else
+            redirect_to post_path(@post)
+        end
 
     end
 
     private
+
     def comment_params
         params.require(:comment).permit(:body)
     end
+
+  
 end
  

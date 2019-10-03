@@ -7,12 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Post.destroy_all
 Comment.destroy_all
-Users.destroy_all
+User.destroy_all
 
 NUM_USERS = 15
 NUM_POSTS = 50
 PASSWORD = 'hudson'
 
+
+super_user = User.create(
+    first_name: "Aurora",
+    last_name: "Smith",
+    email: "aurora@aurora.com",
+    password: PASSWORD,
+    is_admin: true
+)
 
 NUM_USERS.times do
     first_name = Faker::Name.first_name

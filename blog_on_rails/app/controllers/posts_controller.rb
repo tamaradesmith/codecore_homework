@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :edit, :update, :destroy]
 
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+
+  before_action :authorize!, only: [:edit, :destroy, :update, :new]
 
   def index
     @posts= Post.all.order(created_at: :desc)
@@ -43,8 +45,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-      flash[:notice] = "post deleted"
-    @post.destroy
+      # flash[:notice] = "post deleted"
+    @post.destroy 
     redirect_to index_posts_path
   end
 
@@ -58,4 +60,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body)
     end
 
+      def authorize!
+        redirect_to root_path, alert: "Not autherized" unless can?(:crud, @post)
+      end
 end
