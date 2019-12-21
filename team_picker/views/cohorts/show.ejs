@@ -1,0 +1,79 @@
+<%- include('../partials/header') %>
+
+<div class="container border bottom_border">
+   <div>
+<div class="header">
+
+    <h1 class="width"><%= cohorts.name %></h1>
+    <form action="/cohorts/<%= cohorts.id %> " method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete" class="but btn btn-info">
+    </form>
+   
+    <form action="/cohorts/<%= cohorts.id %>/edit " method="GET">
+          <input type="submit" value="Edit" class="but btn btn-info">
+    </form>
+</div>
+       <p>
+           <%= cohorts.members %>
+        </p>
+    
+    </div> 
+    
+</div>
+
+
+<form action="/cohorts/<%= cohorts.id %>/assign" method="post">
+
+<div class="container border">
+
+<h3> Method:</h3>
+<br>
+
+    <label for="type" class="width">
+    <input type="radio" name="type" value="team_count"  class="radio">
+Team Count </label>
+<br>
+
+<label for="type" class="width">
+    <input type="radio" name="type" value="member_count"  class="radio">
+  Number Per Team </label>
+
+<br>
+<label for="quantity">Quantity:</label>
+<input type="text" name="quantity">
+<br>
+<br>
+
+<input type="submit" value="Assign Team">
+
+
+</form>
+
+
+
+</div>
+
+<% if (teams != "none") { %>
+
+    <div class="container">
+        <div class="container border flex"><h4 class="small-space"># </h4>
+            <h4> Members </h4>
+        </div>
+        
+       <% for (let team of teams) { %>
+    <div class="border flex">
+        <div class="small-space"> <%= i %> </div>
+       <h4 >
+        <%= team %>
+        
+        </h4>     
+        
+    </div>
+        <% i++ } %>
+        <% } %>
+
+    </div>
+
+
+<%- include('../partials/footer') %>
