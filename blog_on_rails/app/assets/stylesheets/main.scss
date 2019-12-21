@@ -1,0 +1,296 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: lavender;
+  color: darkslategray;
+  font-size: 2em;
+}
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: lightgray;
+  background: rgb(43, 40, 61);
+  padding: 0.5em;
+  font-size: 1.5em;
+}
+article {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: lavender;
+  justify-content: space-around;
+  flex: 1;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.nav-item {
+  color: lightgray;
+  text-decoration: none;
+  padding: 0 0.75em;
+}
+
+.nav-item:hover {
+  color: grey;
+}
+.nav-icon {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.icon {
+  max-width: 100px;
+  padding: 0 0.25em;
+}
+.icon-text {
+  color: lightgray;
+  text-decoration: none;
+}
+.icon-text:hover {
+  color: grey;
+}
+.footing {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: 1em;
+  align-items: center;
+  text-align: right;
+  color: gray;
+  background: rgb(43, 40, 61);
+  padding: 0.5em;
+}
+.form-width {
+  width: 95%;
+  margin: 0em auto;
+  padding: 0em;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  border: 1px solid rgb(43, 40, 61);
+  border-radius: 10px;
+  margin: 0.5em;
+}
+.card:hover {
+  background: whitesmoke;
+}
+.card-header {
+  font-weight: 800;
+  background: rgb(43, 40, 61);
+  font-size: 1.75em;
+  padding: 0.5em;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+}
+.card-header-text {
+  text-decoration: none;
+  color: lightgray;
+}
+.card-body {
+  padding: 0.5em;
+  font-size: 1.25em;
+}
+.card-body-text {
+  text-decoration: none;
+  color: darkslategray;
+}
+.card-created {
+  color: darkslategray;
+  font-size: 0.5em;
+  margin: 1em 1em 2em;
+}
+.card-blog {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  border: 1px solid rgb(43, 40, 61);
+  color: lightgray;
+  border-radius: 10px;
+  margin: 0.5em;
+  padding-bottom: 1em;
+}
+.card-comment {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  border: 1px solid rgb(43, 40, 61);
+  padding: 0.25em 0.5em;
+  border-radius: 10px;
+  margin: 0.5em;
+}
+.form-div {
+  margin: 0.25em;
+  width: 95%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: lavender;
+  border: 1px solid rgb(43, 40, 61);
+  margin: 0.75em auto;
+  padding: 0.25em;
+  border-radius: 10px;
+  width: 95%;
+}
+.form-item {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.45em;
+  justify-content: flex-start;
+  padding: 0.5em 0.25em;
+}
+.form-field {
+  flex: 1;
+  margin-left: 0.5em;
+  font-size: 0.75em;
+  padding: 0.5em;
+}
+.form-label {
+  margin-bottom: 0.5em;
+  margin-left: 0.5em;
+}
+.form-btn {
+  background: transparent;
+  color: darkslategray;
+  border: 1px solid darkslategray;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 0.25em 0.75em;
+  margin: 0.5em 0em 0em 0.5em;
+}
+.form-btn:hover {
+  background: whitesmoke;
+}
+.form-comment {
+  margin: 0.5em auto;
+}
+.comment-text-area {
+  width: 95%;
+  font-size: 1em;
+  margin: 0em auto;
+}
+.top-border {
+  border-top: 1px solid rgb(43, 40, 61);
+}
+.comment-log {
+  display: flex;
+  flex-direction: column;
+  padding: 0.25em 0.25em;
+  font-size: 1.75em;
+}
+.comment-log-footing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.65em;
+  padding: 0.75em 0em 0em;
+}
+.comment-btn {
+  background: transparent;
+  color: darkslategray;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1em;
+  padding: 0.25em 0.25em;
+}
+.comment-btn:hover {
+  color: slategray;
+}
+@media (min-width: 992px) {
+  header {
+    font-size: 1em;
+  }
+  .card {
+    width: 45%;
+    // min-width: 400px;
+  }
+  .card-header {
+    font-size: 1em;
+  }
+  .card-body {
+    font-size: 1em;
+  }
+  .form-item {
+    font-size: 1em;
+  }
+  .form-field{
+    font-size: .5em;
+  }
+  .form-btn{
+    font-size: .75em;
+  }
+  .comment-text-area{
+    font-size: .75em;
+  }
+  .comment-log{
+    font-size: 1em;
+  }
+  .footing{
+    font-size: .65em;
+  }
+}
+@media (min-width: 1200px) {
+  .card {
+    width: 30%;
+  }
+  .container{
+    width: 45%;
+    padding: 0;
+  }
+  .form {
+    flex-direction: column;
+    width: 1000px;
+    margin: 0.25em auto;
+  }
+  .form-item {
+    display: flex;
+    flex-direction: row;
+    font-size: 1em;
+    justify-content: flex-end;
+    padding: 0.25em;
+  }
+  .flex-item {
+    font-size: 0.65em;
+  }
+  .form-label {
+    width: 110px;
+    padding: 0.1em;
+  }
+  .form-btn {
+    font-size: 0.75em;
+  }
+
+  .card-blog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .card-comment {
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    border: 1px solid rgb(43, 40, 61);
+    border-radius: 10px;
+    margin: 0.5em;
+  }
+}

@@ -1,0 +1,21 @@
+
+<article>
+
+<% @posts.each do |post| %>
+
+<div class="card">
+<div class="card-header">
+<%= link_to post.title, post_path(post), class:"card-header-text" %>
+</div>
+<div class="card-body">
+<%= link_to post.body, post_path(post), class:"card-body-text" %>
+</div>
+</div>
+<% end  %>
+
+
+
+</article>
+
+
+
